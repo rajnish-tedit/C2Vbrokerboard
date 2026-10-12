@@ -7,6 +7,7 @@ import { useState } from "react";
 
 import { AUTH_INPUT, AuthButton, AuthLabel, AuthLayout } from "@/components/auth/AuthLayout";
 import { useToast } from "@/components/ui/Toast";
+import { DEMO_CREDENTIALS } from "@/lib/mock";
 import { knownAccount } from "@/lib/domain/credentials";
 import { EMAIL_RE } from "@/lib/domain/locations";
 import { useDemo } from "@/lib/store/DemoProvider";
@@ -17,7 +18,7 @@ export function ForgotPasswordView() {
   const router = useRouter();
   const demo = useDemo();
   const toast = useToast();
-  const [email, setEmail] = useState(params.get("email") ?? "");
+  const [email, setEmail] = useState(params.get("email") ?? demo.state.registration?.email ?? DEMO_CREDENTIALS.email);
   const [error, setError] = useState<string>();
   const [sent, setSent] = useState(false);
   const [busy, setBusy] = useState(false);

@@ -37,8 +37,14 @@ export function LoginForm() {
 
   // Demo convenience: pre-fill the sign-in form so presenters only need to click.
   useEffect(() => {
-    if (prefilled || !demo.hydrated || params.get("email")) return;
+    if (prefilled || !demo.hydrated) return;
     setPrefilled(true);
+    const qe = params.get("email");
+    if (qe) {
+      const pw = demo.state.credentials[qe.toLowerCase()];
+      if (pw && justReset) setPassword(pw);
+      return;
+    }
     const reg = demo.state.registration;
     if (mode === "broker" && reg && reg.email in demo.state.credentials) {
       setEmail(reg.email);

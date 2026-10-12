@@ -17,8 +17,8 @@ export function ResetPasswordView() {
   const email = (params.get("email") ?? "").trim().toLowerCase();
   const valid = params.get("token") === "demo" && knownAccount(demo.state, email) !== null;
 
-  const [password, setPassword] = useState("");
-  const [confirm, setConfirm] = useState("");
+  const [password, setPassword] = useState("NewTown#2027");
+  const [confirm, setConfirm] = useState("NewTown#2027");
   const [errors, setErrors] = useState<{ password?: string; confirm?: string }>({});
   const [done, setDone] = useState(false);
   const [busy, setBusy] = useState(false);
