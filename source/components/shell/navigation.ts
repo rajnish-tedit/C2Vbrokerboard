@@ -35,7 +35,7 @@ export const BROKER_NAV: NavGroup[] = [
     label: "My Network",
     items: [
       { href: "/broker/agents", label: "Agents", icon: Users },
-      { href: "/broker/vendors", label: "Referred Vendors", icon: Store },
+      { href: "/broker/vendors", label: "Vendors", icon: Store },
     ],
   },
   {

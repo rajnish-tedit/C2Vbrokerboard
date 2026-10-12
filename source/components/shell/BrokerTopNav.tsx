@@ -22,7 +22,7 @@ import { cn, initials } from "@/lib/utils";
 export const BROKER_TOP_NAV = [
   { href: "/broker/dashboard", label: "Dashboard" },
   { href: "/broker/agents", label: "Agents" },
-  { href: "/broker/vendors", label: "Referred Vendors" },
+  { href: "/broker/vendors", label: "Vendors" },
   { href: "/broker/commissions", label: "Revenues" },
   { href: "/broker/payouts", label: "Payouts" },
 ] as const;

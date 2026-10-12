@@ -230,7 +230,7 @@ export function VendorsView() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title="Referred Vendors"
+        title="Vendors"
         description="Every Vendor attributed to your referral link or promo code, with their subscription and paid-conversion status."
       />
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
@@ -361,7 +361,7 @@ export function VendorsView() {
           )}
         </div>
         <DataTable
-          caption="Referred Vendors"
+          caption="Vendors"
           columns={columns}
           rows={rows}
           rowKey={(r) => r.vendor.id}

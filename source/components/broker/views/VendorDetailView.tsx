@@ -102,7 +102,7 @@ export function VendorDetailView({ vendorId }: { vendorId: string }) {
           title="Vendor not found"
           body="This Vendor isn't attributed to your brokerage."
           action={
-            <Button href="/broker/vendors">Back to Referred Vendors</Button>
+            <Button href="/broker/vendors">Back to Vendors</Button>
           }
         />
       </Card>
@@ -131,7 +131,7 @@ export function VendorDetailView({ vendorId }: { vendorId: string }) {
   return (
     <div className="space-y-6">
       <PageHeader
-        back={{ href: "/broker/vendors", label: "Referred Vendors" }}
+        back={{ href: "/broker/vendors", label: "Vendors" }}
         title={vendor.companyName}
         description={`${vendor.trade} · ${vendor.city}, ${vendor.state} · contact ${vendor.contactName}`}
         meta={
