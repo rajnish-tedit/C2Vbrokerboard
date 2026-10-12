@@ -66,7 +66,7 @@ export function LoginForm() {
       setNotice("invalid");
       return;
     }
-    if (mode === "broker") demo.setPreviewNewBroker(kind === "registered");
+    if (mode === "broker") demo.setPreviewNewBroker(false); // returning sign-in: show the network with data (first landing after registration stays empty)
     demo.signIn(mode, em);
     router.push(mode === "admin" ? "/admin/brokers" : "/broker/dashboard");
   };
