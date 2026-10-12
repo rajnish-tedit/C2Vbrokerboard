@@ -54,6 +54,10 @@ function LegalModal({ kind, onClose }: { kind: "terms" | "privacy" | null; onClo
   );
 }
 
+const SAMPLE_LOGO = `data:image/svg+xml;utf8,${encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200"><rect width="600" height="200" fill="#fff"/><rect x="40" y="40" width="120" height="120" rx="22" fill="#3E5C9E"/><path d="M70 120 L100 74 L130 120 Z" fill="#FFC93C"/><rect x="82" y="120" width="36" height="14" fill="#fff"/><text x="182" y="98" font-family="Arial,Helvetica,sans-serif" font-size="46" font-weight="700" fill="#1e2f5a">TOWN SQUARE</text><text x="184" y="140" font-family="Arial,Helvetica,sans-serif" font-size="30" letter-spacing="8" fill="#A8913B">REALTY</text></svg>',
+)}`;
+
 export function RegisterWizard() {
   const demo = useDemo();
   const router = useRouter();
@@ -62,20 +66,20 @@ export function RegisterWizard() {
   const [legal, setLegal] = useState<"terms" | "privacy" | null>(null);
   const [busy, setBusy] = useState(false);
 
-  const [company, setCompany] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirm, setConfirm] = useState("");
-  const [agree, setAgree] = useState(false);
+  const [company, setCompany] = useState("Town Square Realty");
+  const [email, setEmail] = useState("michael@townsquarerealty.com");
+  const [password, setPassword] = useState("Town35-Demo!");
+  const [confirm, setConfirm] = useState("Town35-Demo!");
+  const [agree, setAgree] = useState(true);
 
-  const [logo, setLogo] = useState<string | null>(null);
-  const [label, setLabel] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [zip, setZip] = useState("");
+  const [logo, setLogo] = useState<string | null>(SAMPLE_LOGO);
+  const [label, setLabel] = useState("Main Office");
+  const [phone, setPhone] = useState("(512) 555-0142");
+  const [address, setAddress] = useState("500 Congress Ave, Suite 100");
+  const [city, setCity] = useState("Austin");
+  const [zip, setZip] = useState("78701");
   const [country, setCountry] = useState("United States");
-  const [region, setRegion] = useState("");
+  const [region, setRegion] = useState("Texas");
   const [errors, setErrors] = useState<Errors>({});
 
   const clear = (k: string) => setErrors((e) => ({ ...e, [k]: undefined }));
@@ -105,7 +109,7 @@ export function RegisterWizard() {
     const em = email.trim().toLowerCase();
     if (company.trim().length < 2) er.company = "Enter your broker or company name.";
     if (!EMAIL_RE.test(em)) er.email = "Enter a valid business email, for example name@brokerage.com.";
-    else if (em in demo.state.credentials || em === DEMO_CREDENTIALS.email || em === DEMO_CREDENTIALS.adminEmail)
+    else if (em === DEMO_CREDENTIALS.email || em === DEMO_CREDENTIALS.adminEmail)
       er.email = "An account with this email already exists. Sign in instead.";
     if (password.length < 8) er.password = "Use at least 8 characters.";
     if (confirm !== password) er.confirm = "Passwords do not match.";

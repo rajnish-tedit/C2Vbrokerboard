@@ -23,6 +23,7 @@ export function LoginForm() {
   const [mode, setMode] = useState<"broker" | "admin">(params.get("as") === "admin" ? "admin" : "broker");
   const [email, setEmail] = useState(params.get("email") ?? "");
   const [password, setPassword] = useState("");
+  const [prefilled, setPrefilled] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
   const [notice, setNotice] = useState<Notice>("none");
   const [busy, setBusy] = useState(false);
@@ -33,6 +34,20 @@ export function LoginForm() {
       router.replace(demo.state.session.role === "admin" ? "/admin/brokers" : "/broker/dashboard");
     }
   }, [demo.hydrated, demo.state.session, router]);
+
+  // Demo convenience: pre-fill the sign-in form so presenters only need to click.
+  useEffect(() => {
+    if (prefilled || !demo.hydrated || params.get("email")) return;
+    setPrefilled(true);
+    const reg = demo.state.registration;
+    if (mode === "broker" && reg && reg.email in demo.state.credentials) {
+      setEmail(reg.email);
+      setPassword(demo.state.credentials[reg.email]);
+    } else {
+      setEmail(mode === "admin" ? DEMO_CREDENTIALS.adminEmail : DEMO_CREDENTIALS.email);
+      setPassword(DEMO_CREDENTIALS.password);
+    }
+  }, [prefilled, demo.hydrated, demo.state.registration, demo.state.credentials, mode, params]);
 
   const fillDemo = () => {
     setEmail(mode === "admin" ? DEMO_CREDENTIALS.adminEmail : DEMO_CREDENTIALS.email);
