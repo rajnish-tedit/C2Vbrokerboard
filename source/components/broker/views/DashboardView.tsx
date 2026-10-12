@@ -360,7 +360,7 @@ export function DashboardView() {
           </div>
         </div>
         <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 lg:min-w-[28rem]">
-          <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-500">Your referral link</p>
+          <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-500">Your Vendor Referral Link</p>
           <div className="mt-1 flex flex-wrap items-center justify-between gap-3">
             <p className="num min-w-0 break-all text-lg font-semibold text-navy-950">{link}</p>
             <div className="flex gap-2">
